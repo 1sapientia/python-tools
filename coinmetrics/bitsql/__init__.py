@@ -9,7 +9,7 @@ from coinmetrics.bitsql.node import *
 from coinmetrics.bitsql.aggregator import *
 from coinmetrics.bitsql.omni.node import OmniNode
 from coinmetrics.bitsql.omni.schema import OmniSchema
-from coinmetrics.bitsql.omni.query import OmniQuery, TetherQuery, MaidSafeCoinQuery
+from coinmetrics.bitsql.omni.query import OmniQuery, TetherQuery, MaidSafeCoinQuery, EurtQuery
 from coinmetrics.bitsql.omni.exporter import OmniExporter
 from coinmetrics.bitsql.omni.aggregator import OmniManagedPropertyAggregator, OmniCrowdsalePropertyAggregator
 from coinmetrics.utils.execution import executeInParallelSameProc
@@ -87,6 +87,12 @@ def dbObjectsFactory(asset, db, log):
         "usdt": [
             lambda db: OmniSchema(db),
             lambda db, schema: TetherQuery(db, schema),
+            lambda db, schema: None,
+            lambda db, query: OmniManagedPropertyAggregator(db, query, log)
+        ],
+        "eurt": [
+            lambda db: OmniSchema(db),
+            lambda db, schema: EurtQuery(db, schema),
             lambda db, schema: None,
             lambda db, query: OmniManagedPropertyAggregator(db, query, log)
         ],

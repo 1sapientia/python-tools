@@ -124,6 +124,11 @@ class TetherQuery(ManagedPropertyQuery):
         super(TetherQuery, self).__init__(dbAccess, schema, 31, "usdt")
 
 
+class EurtQuery(ManagedPropertyQuery):
+
+    def __init__(self, dbAccess, schema):
+        super(Eurt, self).__init__(dbAccess, schema, 41, "eurt")
+
 class MaidSafeCoinQuery(PropertyQuery):
 
     def __init__(self, dbAccess, schema):
