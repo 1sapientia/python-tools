@@ -15,7 +15,7 @@ PROPERTY_TYPES = {
     "divisible": 2,
 }
 
-IGNORE_TX_TYPES = {25, 26, 28, 70, 71, 185, 65534}
+IGNORE_TX_TYPES = {25, 26, 27, 28, 70, 71, 185, 186, 65534}
 
 
 def omniOutputValueSatoshi(amount):
